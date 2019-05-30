@@ -1,7 +1,7 @@
 import React from "react";
 import ToDoList from "./components/TodoComponents/TodoList";
 import ToDoForm from "./components/TodoComponents/TodoForm";
-import Todo from "./components/TodoComponents/Todo";
+import { ifStatement } from "@babel/types";
 
 class App extends React.Component {
 	// you will need a place to store your state in this component.
@@ -45,22 +45,19 @@ class App extends React.Component {
 		});
 	};
 
-	selectExistingToDo(id) {
-		let selected = this.state.toDosArray.slice();
-		selected = selected.map(el => {
-			if (el.id === id) {
+	selectExistingToDo = e => {
+		const selected = [...this.state.toDosArray].map(el => {
+			if (el.id.toString() === e.target.id) {
 				el.completed = !el.completed;
 				return el;
-			} else {
-				return el;
-			}
+			} else return el;
 		});
-		this.setState({ selected });
-	}
+		this.setState({ toDosArray: selected });
+	};
 
 	clearToDo = e => {
 		e.preventDefault();
-		let toDosArray = this.state.toDosArray.filter(el => !el.completed);
+		let toDosArray = this.state.toDosArray.filter(el => el.completed === false);
 		this.setState({ toDosArray });
 	};
 

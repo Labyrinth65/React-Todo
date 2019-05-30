@@ -9,7 +9,7 @@ class ToDoList extends React.Component {
 					<Todo
 						key={el.id}
 						todoName={el}
-						selectExistingToDoC={this.props.selectExistingToDo}
+						selectExistingToDoG={this.props.selectExistingToDoC}
 					/>
 				))}
 			</div>
