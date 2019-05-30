@@ -1,10 +1,11 @@
 import React from "react";
+import "./Todo.css";
 
 const Todo = props => {
 	return (
 		<div
 			onClick={props.selectExistingToDoG}
-			className="toDoItem"
+			className={`${props.todoName.completed}`}
 			id={props.todoName.id}
 		>
 			{props.todoName.task}
